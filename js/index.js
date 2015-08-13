@@ -1,9 +1,8 @@
 $(document).ready(function() {
     // Configure/customize these variables.
     var showChar = 100;  // How many characters are shown by default
-    var ellipsestext = "...";
-    var moretext = "Show more >";
-    var lesstext = "Show less";
+    var ellipsestext = "";
+    var moretext = "閱讀完整內容";
     
 
     $('.more').each(function() {
@@ -14,7 +13,7 @@ $(document).ready(function() {
             var c = content.substr(0, showChar);
             var h = content.substr(showChar, content.length - showChar);
  
-            var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="play-button morelink small">' + moretext + '</a></span>';
+            var html = c + '<span class="moreellipses">' + ellipsestext+ '</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<div><a href="" class="play-button morelink small">' + moretext + '</a></div></span>';
  
             $(this).html(html);
         }
@@ -26,8 +25,9 @@ $(document).ready(function() {
             $(this).removeClass("less");
             $(this).html(moretext);
         } else {
+            ellipsestext = "";
             $(this).addClass("less");
-            $(this).addClass("play-button");
+            $(this).removeClass("play-button");
             $(this).html('');
         }
         $(this).parent().prev().toggle();
